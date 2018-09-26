@@ -1,6 +1,7 @@
 package gvalstrings
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -41,4 +42,16 @@ func TestSingleQuoted(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleSingleQuoted() {
+	value, err := gval.Evaluate(`'Hello `+"World!", nil, SingleQuoted())
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(value)
+
+	// Output
+	// Hello World!
 }
